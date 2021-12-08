@@ -6,6 +6,7 @@
 #' @param skeleton_args `list` passed to `genesee_skeleton`
 #'
 #' @return `character` pointing to root of created project
+#' @export
 create_local_project = function(dir = tempdir(), env = parent.frame(), skeleton_args = list()){
   oldwd = getwd()
   withr::defer({
@@ -18,6 +19,7 @@ create_local_project = function(dir = tempdir(), env = parent.frame(), skeleton_
 }
 
 #' @describeIn create_local_project create a project and copy in some additional files (eg example data)
+#' @export
 create_exampleproject = function(dir = tempdir(), env = parent.frame(), skeleton_args = list(project_type = 'scRNA')){
   project_dir = create_local_project(dir, env, skeleton_args)
   pkg_dir = sprintf('%s_projectexample/', skeleton_args$project_type)
@@ -31,6 +33,7 @@ create_exampleproject = function(dir = tempdir(), env = parent.frame(), skeleton
 
 #' @describeIn create_local_project create and destroy files with a prefix
 #' @param prefix prefix of files to be destroyed on exit
+#' @export
 create_temp_prefix = function(prefix = tempfile(), env = parent.frame()){
   withr::defer({
     unlink(paste0(prefix, '*'), expand = TRUE)
