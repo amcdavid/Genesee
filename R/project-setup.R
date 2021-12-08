@@ -22,7 +22,7 @@ get_config = function(Genesee.project, Genesee.type){
     yaml::read_yaml(file.path(Genesee.project, 'config.yml'))
   })
   if(inherits(cfg, 'try-error')) stop("Unable to load 'config.yml' from ", Genesee.project)
-  if(!is.null(Genesee.type)) cfg$Genesee.type = Genesee.type
+  if(!missing(Genesee.type) && !is.null(Genesee.type)) cfg$Genesee.type = Genesee.type
   cfg$Genesee.project = Genesee.project
   cfg$Genesee.version = as.character(packageVersion(cfg$Genesee.template.package))
   cfg

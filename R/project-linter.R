@@ -22,9 +22,9 @@ create_local_project = function(dir = tempdir(), env = parent.frame(), skeleton_
 #' @export
 create_exampleproject = function(dir = tempdir(), env = parent.frame(), skeleton_args = list(project_type = 'scRNA')){
   project_dir = create_local_project(dir, env, skeleton_args)
+  cfg = get_config(project_dir)
   pkg_dir = sprintf('%s_projectexample/', skeleton_args$project_type)
-  cfg = get_config(pkg_dir)
-  pkg_contents = file.path(system.file(pkg_dir, package = cfg$Genesee.template.package), '.')
+  pkg_contents = file.path(system.file(pkg_dir, package = cfg$Genesee.template.package, mustWork = TRUE), '.')
   file.copy(pkg_contents, project_dir, recursive = TRUE)
   # only contents, not leading directory pkg_dir.
   # Can't figure out how to get file.copy to do this
