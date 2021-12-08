@@ -14,5 +14,5 @@ Return mtime if file exists
 }
 \examples{
 file_mtime_exists("Doesn't exist")
-file_mtime_exists(system.file("DESCRIPTION", package = 'GeneseeSC'))
+file_mtime_exists(system.file("DESCRIPTION", package = 'Genesee'))
 }

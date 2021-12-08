@@ -90,23 +90,23 @@ interpolate_and_copy = function(project_directory = NULL, init_markdown = TRUE, 
     git_dirty = character(0)
   }
   if (init_markdown) {
-    mdf = list.files(system.file(stringr::str_c(type, '_markdown/'), package = template_package), full.names = TRUE)
+    mdf = list.files(system_file_ext(stringr::str_c(type, '_markdown/'), package = template_package), full.names = TRUE)
     lapply(mdf, function(x) interpolate_and_copy_file(x, project_directory, config, git_dirty = git_dirty))
   }
 
   if(init_sh){
-    shf = list.files(system.file(stringr::str_c(type, '_sh/'), package = template_package), full.names = TRUE)
+    shf = list.files(system_file_ext(stringr::str_c(type, '_sh/'), package = template_package), full.names = TRUE)
     lapply(shf, function(x) interpolate_and_copy_file(x, project_directory, config, git_dirty = git_dirty))
   }
 
   if(init_gitfiles){
-    ghf = list.files(system.file(stringr::str_c(type, '_git/'), package = template_package), full.names = TRUE)
+    ghf = list.files(system_file_ext(stringr::str_c(type, '_git/'), package = template_package), full.names = TRUE)
 # rewrite _ to -> .
     lapply(ghf, function(x) interpolate_and_copy_file(x, project_directory, config, rename_ = TRUE,  git_dirty = git_dirty))
   }
 
   if(init_R){
-    rf = list.files(system.file(stringr::str_c(type, '_R/'), package = template_package), full.names = TRUE)
+    rf = list.files(system_file_ext(stringr::str_c(type, '_R/'), package = template_package), full.names = TRUE)
     lapply(rf, function(x) interpolate_and_copy_file(x, project_directory, config, git_dirty = git_dirty))
   }
   TRUE

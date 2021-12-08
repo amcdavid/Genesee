@@ -24,7 +24,7 @@ create_exampleproject = function(dir = tempdir(), env = parent.frame(), skeleton
   project_dir = create_local_project(dir, env, skeleton_args)
   cfg = get_config(project_dir)
   pkg_dir = sprintf('%s_projectexample/', skeleton_args$project_type)
-  pkg_contents = file.path(system.file(pkg_dir, package = cfg$Genesee.template.package, mustWork = TRUE), '.')
+  pkg_contents = file.path(system_file_ext(pkg_dir, package = cfg$Genesee.template.package, mustWork = TRUE), '.')
   file.copy(pkg_contents, project_dir, recursive = TRUE)
   # only contents, not leading directory pkg_dir.
   # Can't figure out how to get file.copy to do this
@@ -70,7 +70,7 @@ generate_knitr_fun = function(name, pars){
 #' @param dev_dir `character` naming path to write the R scripts
 #' @param project_type `character` project type to write
 #'
-#' @return
+#' @return writes to a file.
 #' @export
 build_markdown_scaffold = function(dev_dir = getwd(), project_type = 'scRNA'){
   path_to_write = file.path(dev_dir, 'R', sprintf('scaffold_%s.R', project_type))

@@ -1,10 +1,42 @@
+# From pkgload:::shim_system.file
+# needed when calling system.file onto other devtools loaded packages...
+#' @inherit pkgload:::system.file
+#' @export
+system_file_ext = function (..., package = "base", lib.loc = NULL, mustWork = FALSE) {
+  if (!(package %in% devtools::dev_packages())) {
+    base::system.file(..., package = package, lib.loc = lib.loc,
+                      mustWork = mustWork)
+  }
+  else {
+    pkg_path <- find.package(package)
+    files_inst <- file.path(pkg_path, "inst", ...)
+    present_inst <- file.exists(files_inst)
+    files_top <- file.path(pkg_path, ...)
+    present_top <- file.exists(files_top)
+    files <- files_top
+    files[present_inst] <- files_inst[present_inst]
+    files <- files[present_inst | present_top]
+    if (length(files) > 0) {
+      normalizePath(files, winslash = "/")
+    }
+    else {
+      if (mustWork) {
+        stop("No file found", call. = FALSE)
+      }
+      else {
+        ""
+      }
+    }
+  }
+}
+
 #' Return mtime if file exists
 #'
 #' @param file length one `character`
 #' @export
 #' @examples
 #' file_mtime_exists("Doesn't exist")
-#' file_mtime_exists(system.file("DESCRIPTION", package = 'GeneseeSC'))
+#' file_mtime_exists(system.file("DESCRIPTION", package = 'Genesee'))
 file_mtime_exists = function(file){
   if(is.null(file) || !file.exists(file)) return(file)
   else file.mtime(file)

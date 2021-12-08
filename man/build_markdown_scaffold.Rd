@@ -12,7 +12,7 @@ build_markdown_scaffold(dev_dir = getwd(), project_type = "scRNA")
 \item{project_type}{\code{character} project type to write}
 }
 \value{
-
+writes to a file.
 }
 \description{
 The functions will be appended to a file in \verb{<dev_dir>/scaffold_<project_type>.R}.
