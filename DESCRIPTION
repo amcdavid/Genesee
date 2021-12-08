@@ -1,6 +1,6 @@
 Package: Genesee
 Title: Core functions for genomics project templating
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: 
     person(given = "Andrew",
            family = "McDavid",
@@ -37,5 +37,3 @@ Imports:
   methods,
   generics
 Config/testthat/edition: 3
-Remotes:
-  amcdavid/GeneseeSC
