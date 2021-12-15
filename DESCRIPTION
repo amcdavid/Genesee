@@ -1,6 +1,6 @@
 Package: Genesee
 Title: Core functions for genomics project templating
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Authors@R: 
     person(given = "Andrew",
            family = "McDavid",
@@ -18,7 +18,8 @@ Suggests:
     testthat (>= 3.0.0),
     GeneseeSC (>= 0.4.0),
     renv,
-    rslurm
+    rslurm,
+    rmarkdown
 Imports:
   readr,
   dplyr,
