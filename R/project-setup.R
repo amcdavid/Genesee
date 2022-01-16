@@ -83,6 +83,7 @@ interpolate_and_copy = function(project_directory = NULL, init_markdown = TRUE, 
   type = config$Genesee.type
   project_directory = config$Genesee.project
   template_package = config$Genesee.template.package
+  setwd(project_directory)
   if(dir.exists('.git')){
     status = git2r::status()
     git_dirty = unlist(status)
@@ -186,10 +187,10 @@ genesee_skeleton = function(genesee_root,
 
   write_config(project_directory, authors, project_title, project_type, pkg_info$package)
 
+  setwd(project_directory)
   if (init_templates){
     interpolate_and_copy(project_directory)
   }
-  setwd(project_directory)
 
   if (init_git) setup_git(project_title)
 
