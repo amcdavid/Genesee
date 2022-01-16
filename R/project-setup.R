@@ -144,6 +144,7 @@ create_directory = function(path){
 #' @param init_templates `logical` Should template markdown, shell scripts, etc, be copied?
 #' @param use_renv `logical` Should renv be initialized?
 #' @param project_type `character`, one of `scRNA`, `RNA` or `scVDJ`
+#' @param init_git `logical` should a git repo be initialized?
 #' @param authors `character` containing the authors/editors of the project
 #' @param force `logical` force creation of a project
 #' @param navigate_rawdata `logical` should we shift focus to the rstudio terminal opened on the rawdata directory
@@ -154,6 +155,7 @@ genesee_skeleton = function(genesee_root,
                               investigator,
                               project_title,
                               init_templates = TRUE,
+                              init_git = TRUE,
                               use_renv = FALSE,
                               project_type = 'scRNA',
                               authors = 'default',
@@ -188,7 +190,8 @@ genesee_skeleton = function(genesee_root,
     interpolate_and_copy(project_directory)
   }
   setwd(project_directory)
-  setup_git(project_title)
+
+  if (init_git) setup_git(project_title)
 
 
 
