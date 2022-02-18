@@ -9,6 +9,7 @@ genesee_skeleton(
   investigator,
   project_title,
   init_templates = TRUE,
+  init_git = TRUE,
   use_renv = FALSE,
   project_type = "scRNA",
   authors = "default",
@@ -24,6 +25,8 @@ genesee_skeleton(
 \item{project_title}{\code{character} naming project}
 
 \item{init_templates}{\code{logical} Should template markdown, shell scripts, etc, be copied?}
+
+\item{init_git}{\code{logical} should a git repo be initialized?}
 
 \item{use_renv}{\code{logical} Should renv be initialized?}
 

@@ -38,7 +38,7 @@ render = function(use_sbatch = FALSE, ...){
   if(use_sbatch){
     render_batch(...)
   } else{
-    dots = list(...)
+    dots = list(..., envir = globalenv())
     if(any(nchar(names(dots))==0)) stop("Sorry, I can't figure out how to pass positional arguments here. All arguments must be named.")
     dots = dots[setdiff(names(dots), names(formals(render_batch)))]
     do.call(rmarkdown::render, dots)
