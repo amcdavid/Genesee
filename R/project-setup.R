@@ -274,7 +274,8 @@ make_sample_sheet = function(project_directory = NULL, write = TRUE, overwrite =
     sample_sheet = get_vdj_contigs(project_directory)
   }
 
-  sample_sheet$library_id = seq_len(nrow(sample_sheet))
+  sample_sheet$sample_id = seq_len(nrow(sample_sheet))
+  sample_sheet$library_id = sample_sheet$sample_id
   sample_sheet$treatment = NA_character_
 if(type == 'scRNA'){
   #reorder
